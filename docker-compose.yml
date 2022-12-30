@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  db01: 
+    image: mysql
+    restart: always #no
+    environment: 
+      MYSQL_ROOT_PASSWORD: myrootpassword
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
