@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	client, err := ent.Open("mysql", "myuser:myrootpassword@tcp(<host>:<port>)/db01?parseTIme=True")
+	client, err := ent.Open("mysql", "root:myrootpassword@tcp(3306:3306)/db01?parseTIme=True")
 	if err != nil {
 		log.Fatalf("failed opening connection to mysql: %v", err)
 	}
