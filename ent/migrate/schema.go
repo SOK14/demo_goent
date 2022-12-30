@@ -41,6 +41,13 @@ var (
 				OnDelete:   schema.NoAction,
 			},
 		},
+		Indexes: []*schema.Index{
+			{
+				Name:    "user_first_name_last_name",
+				Unique:  false,
+				Columns: []*schema.Column{UsersColumns[1], UsersColumns[2]},
+			},
+		},
 	}
 	// Tables holds all the tables in the schema.
 	Tables = []*schema.Table{
