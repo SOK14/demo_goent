@@ -13,6 +13,15 @@ docker-compose up -d
 # go ent でschemaを作成しテーブルを作成する
 
 
+# command
+```
+docker exec -it demo_goent-db01-1 /bin/bash # -- docker containerのターミナルに入る
+mysql -u root -p -h localhost -P 3306 --protocol=tcp　# -- docker hostからmysqlに接続
+show databases;　# -- DB一覧を取得
+use mydb;　# -- mydbを使用
+show tables; # -- DB内のtable一覧を取得
+```
+
 # 参考
 主に1,3を参考にした
 1. [はじめに \| ent](https://entgo.io/ja/docs/schema-def/)

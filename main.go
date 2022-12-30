@@ -4,7 +4,6 @@ import (
 	"context"
 	"demo_goent/ent/migrate"
 	"log"
-	"os"
 
 	"entgo.io/ent/examples/fs/ent"
 
@@ -18,10 +17,13 @@ func main() {
 	}
 	defer client.Close()
 	ctx := context.Background()
-	// dump migration changes to stdout
-	if err := client.Schema.WriteTo(ctx, os.Stdout, migrate.WithForeignKeys(false)); err != nil {
-		log.Fatalf("failed creating schema resources: %v", err)
+	if err := client.Schema.Create(ctx, migrate.WithForeignKeys(false)); err != nil {
+		log.Fatalf("failed printing schema changes: %v", err)
 	}
+	// dump migration changes to stdout
+	// if err := client.Schema.WriteTo(ctx, os.Stdout, migrate.WithForeignKeys(false)); err != nil {
+	// 	log.Fatalf("failed creating schema resources: %v", err)
+	// }
 	log.Print("ent sample done")
 }
 
