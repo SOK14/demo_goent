@@ -33,3 +33,9 @@ func (User) Edges() []ent.Edge {
 			Required(),
 	}
 }
+
+func (User) Indexes() []ent.Index {
+	return []ent.Index{
+		index.Fields("first_name", "last_name")
+	}
+}
