@@ -9,7 +9,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
-// -- STEP6: Read
+// -- STEP7: Delete
 func main() {
 	entOptions := []ent.Option{}
 	entOptions = append(entOptions, ent.Debug())
@@ -22,15 +22,38 @@ func main() {
 
 	ctx := context.Background()
 	usr, err := client.Debug().User.
-		Query().
+		Delete().
 		Where(user.Age(10)).
-		All(ctx)
+		Exec(ctx)
 	if err != nil {
 		log.Fatalf("failed create user: %v", err)
 	}
 	log.Printf("user: %+v", usr)
 	log.Print("ent sample done")
 }
+
+// -- STEP6: Read
+// func main() {
+// 	entOptions := []ent.Option{}
+// 	entOptions = append(entOptions, ent.Debug())
+// 	// client, err := ent.Open("mysql", "root:myrootpassword@tcp(localhost:3306)/mydb?parseTime=True", entOptions...)
+// 	client, err := ent.Open("mysql", "root:myrootpassword@tcp(localhost:3306)/mydb?parseTime=True")
+// 	if err != nil {
+// 		log.Fatalf("failed opening connection to mysql: %v", err)
+// 	}
+// 	defer client.Close()
+
+// 	ctx := context.Background()
+// 	usr, err := client.Debug().User.
+// 		Query().
+// 		Where(user.Age(10)).
+// 		All(ctx)
+// 	if err != nil {
+// 		log.Fatalf("failed create user: %v", err)
+// 	}
+// 	log.Printf("user: %+v", usr)
+// 	log.Print("ent sample done")
+// }
 
 // -- STEP5: Update
 // func main() {
