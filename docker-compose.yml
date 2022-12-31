@@ -3,7 +3,7 @@ version: "3"
 services:
   db01: 
     image: mysql
-    restart: always #no
+    restart: always
     environment: 
       MYSQL_ROOT_PASSWORD: myrootpassword
       MYSQL_DATABASE: mydb
