@@ -3,12 +3,14 @@ package main
 import (
 	"context"
 	"demo_goent/ent"
+	"demo_goent/ent/company"
+	"demo_goent/ent/user"
 	"log"
 
 	_ "github.com/go-sql-driver/mysql"
 )
 
-// -- Update
+// -- STEP5: Update
 func main() {
 	entOptions := []ent.Option{}
 	entOptions = append(entOptions, ent.Debug())
@@ -21,8 +23,9 @@ func main() {
 
 	ctx := context.Background()
 	cmp, err := client.Debug().Company.
-		Create().
-		SetName("companyA").
+		Update().
+		SetName("companyB").
+		Where(company.Name("companyA")).
 		Save(ctx)
 	if err != nil {
 		log.Fatalf("failed create company: %v", err)
@@ -30,12 +33,9 @@ func main() {
 	log.Printf("cmp: %+v", cmp)
 
 	usr, err := client.Debug().User.
-		Create().
-		SetFirstName("first name").
-		SetLastName("last name").
-		SetAge(20).
-		SetEmail("example@example.co.jp").
-		SetCompany(cmp).
+		Update().
+		SetAge(10).
+		Where(user.Age(20)).
 		Save(ctx)
 	if err != nil {
 		log.Fatalf("failed create user: %v", err)
