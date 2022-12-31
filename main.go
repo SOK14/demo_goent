@@ -3,14 +3,13 @@ package main
 import (
 	"context"
 	"demo_goent/ent"
-	"demo_goent/ent/company"
 	"demo_goent/ent/user"
 	"log"
 
 	_ "github.com/go-sql-driver/mysql"
 )
 
-// -- STEP5: Update
+// -- STEP6: Read
 func main() {
 	entOptions := []ent.Option{}
 	entOptions = append(entOptions, ent.Debug())
@@ -22,27 +21,50 @@ func main() {
 	defer client.Close()
 
 	ctx := context.Background()
-	cmp, err := client.Debug().Company.
-		Update().
-		SetName("companyB").
-		Where(company.Name("companyA")).
-		Save(ctx)
-	if err != nil {
-		log.Fatalf("failed create company: %v", err)
-	}
-	log.Printf("cmp: %+v", cmp)
-
 	usr, err := client.Debug().User.
-		Update().
-		SetAge(10).
-		Where(user.Age(20)).
-		Save(ctx)
+		Query().
+		Where(user.Age(10)).
+		All(ctx)
 	if err != nil {
 		log.Fatalf("failed create user: %v", err)
 	}
 	log.Printf("user: %+v", usr)
 	log.Print("ent sample done")
 }
+
+// -- STEP5: Update
+// func main() {
+// 	entOptions := []ent.Option{}
+// 	entOptions = append(entOptions, ent.Debug())
+// 	// client, err := ent.Open("mysql", "root:myrootpassword@tcp(localhost:3306)/mydb?parseTime=True", entOptions...)
+// 	client, err := ent.Open("mysql", "root:myrootpassword@tcp(localhost:3306)/mydb?parseTime=True")
+// 	if err != nil {
+// 		log.Fatalf("failed opening connection to mysql: %v", err)
+// 	}
+// 	defer client.Close()
+
+// 	ctx := context.Background()
+// 	cmp, err := client.Debug().Company.
+// 		Update().
+// 		SetName("companyB").
+// 		Where(company.Name("companyA")).
+// 		Save(ctx)
+// 	if err != nil {
+// 		log.Fatalf("failed create company: %v", err)
+// 	}
+// 	log.Printf("cmp: %+v", cmp)
+
+// 	usr, err := client.Debug().User.
+// 		Update().
+// 		SetAge(10).
+// 		Where(user.Age(20)).
+// 		Save(ctx)
+// 	if err != nil {
+// 		log.Fatalf("failed create user: %v", err)
+// 	}
+// 	log.Printf("user: %+v", usr)
+// 	log.Print("ent sample done")
+// }
 
 // -- STEP4: Create
 // func main() {
