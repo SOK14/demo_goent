@@ -4,7 +4,7 @@
 3. go entのcurdを使ってリソースを操作する
 
 # dockerでmysqlをlocalに構築する
-docker-compose.ymlを叩けばOK
+docker-compose.ymlを叩けばOK  
 docker-compose.ymlファイルを置いたディレクトリをカレントディレクトにして
 ```
 docker-compose up -d
