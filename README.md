@@ -29,6 +29,7 @@ mysql -u root -p -h localhost -P 3306 --protocol=tcp　# -- docker hostからmys
 show databases;　# -- DB一覧を取得
 use mydb;　# -- mydbを使用
 show tables; # -- DB内のtable一覧を取得
+show table status;　# -- DB内のtable詳細を取得
 ```
 
 go
