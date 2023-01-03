@@ -30,6 +30,7 @@ show databases;　# -- DB一覧を取得
 use mydb;　# -- mydbを使用
 show tables; # -- DB内のtable一覧を取得
 show table status;　# -- DB内のtable詳細を取得
+desc [tableName] # -- テーブル設計の確認
 ```
 
 go
