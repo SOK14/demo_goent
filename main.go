@@ -32,6 +32,7 @@ func main() {
 	log.Print("ent sample done")
 }
 
+
 // -- STEP6: Read
 // func main() {
 // 	entOptions := []ent.Option{}
