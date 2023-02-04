@@ -13,7 +13,7 @@ docker-compose up -d
 # go ent でschemaを作成しテーブルを作成する/go entのcurdを使ってリソースを操作する
 `main.go`をSTEP1-7の順に叩く
 ```
-gor run main.go
+go run main.go
 ```
 
 # command
